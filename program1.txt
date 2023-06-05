@@ -1,0 +1,35 @@
+//ceasar cipher
+#include<stdio.h>
+#include<ctype.h>
+int main(){
+    char text[100],encrypt[100],decrypt[100];
+    int key=3;
+    printf("enter the text: \n");
+    scanf("%s",text);
+    printf("Text is:%s\n",text);
+    for (int i = 0; text[i]!='\0'; i++)
+    {
+        char ch=text[i];
+        if(isupper(ch)){
+            ch='A'+(ch-'A'+key)%26;
+        }
+        else if(islower(ch)){
+            ch='a'+(ch-'a'+key)%26;
+        }
+        encrypt[i]=ch;
+    }
+    printf("cipher text is: %s\n",encrypt);
+    for(int i=0;encrypt[i]!='\0';i++)
+    {
+        char ch=encrypt[i];
+        if(isupper(ch)){
+            ch='A'+(ch-'A'-key+26)%26;
+        }
+        else if(islower(ch)){
+            ch='a'+(ch-'a'-key+26)%26;
+        }
+        decrypt[i]=ch;
+    }
+    printf("after decryption: %s\n",decrypt);
+    return 0;
+}
